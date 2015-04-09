@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PAF.Contracts.PAFAddress>
+@{
+    ViewBag.Title = "Index";
+    Layout = "../Shared/_Layout.cshtml";
+}
+<h2>Get Address</h2>
+
+<form method="GET" class="form-group">
+    <input class="form-control" type="search" name="searchTerm"/>
+    <input class="btn btn-default" type="submit" value="Search By PostCode"/>
+</form>
+
+@if (Model==null)
+{
+    <div></div>
+}
+else
+{
+    foreach (var item in Model)
+ {
+     <div class="row ">
+         @*<div>@Html.Raw(HttpUtility.HtmlEncode(@item.Address1).Replace("\n", "<br/>"))</div>*@
+         <div style="white-space: pre-line">@item.Address1</div>
+         <div style="white-space: pre-line">@item.Address2</div>
+         <div style="white-space: pre-line">@item.Address3</div>
+         <div style="white-space: pre-line">@item.PostCode</div>
+         <div style="white-space: pre-line">@item.Town</div>
+     </div>
+    <br/><br/>
+ }
+}
